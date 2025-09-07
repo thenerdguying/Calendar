@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+.wrapper {
+  padding: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: auto;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+.wrapper .redesign-datepicker-group {
+  position: relative;
+  margin-bottom: 45px;
+}
+.wrapper .redesign-datepicker-group.error .bar:before, .wrapper .redesign-datepicker-group.error .bar:after {
+  background: red;
+}
+.wrapper .redesign-datepicker-group.error .input-message {
+  color: red;
+  transform: scale(1);
+}
+.wrapper .redesign-datepicker-group input {
+  font-size: 18px;
+  padding: 10px 0;
+  width: 100%;
+  display: block;
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid #4285f4;
+}
+.wrapper .redesign-datepicker-group input:focus {
+  outline: none;
+}
+.wrapper .redesign-datepicker-group input:focus ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #4285F4;
+}
+.wrapper .redesign-datepicker-group input:focus ~ .bar:before, .wrapper .redesign-datepicker-group input:focus ~ .bar:after {
+  width: 50%;
+}
+.wrapper .redesign-datepicker-group input:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+.wrapper .redesign-datepicker-group input:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #4285F4;
+}
+.wrapper .redesign-datepicker-group label {
+  color: #4285F4;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.wrapper .redesign-datepicker-group .bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.wrapper .redesign-datepicker-group .bar:before, .wrapper .redesign-datepicker-group .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #4285F4;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.wrapper .redesign-datepicker-group .bar:before {
+  left: 50%;
+}
+.wrapper .redesign-datepicker-group .bar:after {
+  right: 50%;
+}
+.wrapper .redesign-datepicker-group .highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.wrapper .redesign-datepicker-group .input-message {
+  position: absolute;
+  top: 100%;
+  transform-origin: 0 0;
+  transform: scale(0);
+  transition: transform 0.2s;
+  will-change: transform;
+}
+@keyframes inputHighlighter {
+  from {
+    background: #2F3C4E;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+.wrapper .datepicker {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  transform-origin: 50% 0%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+.wrapper .datepicker.open {
+  transform: scale(1);
+  opacity: 1;
+}
+.wrapper .datepicker header {
+  background-color: #4285F4;
+  padding: 16px 24px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+.wrapper .datepicker header .btn-select-year {
+  font-weight: 300;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.wrapper .datepicker header .btn-select-year.active {
+  opacity: 1;
+}
+.wrapper .datepicker header .btn-date-label {
+  margin: 8px 0 4px 0;
+  font-weight: 400;
+  font-size: 1.75em;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.wrapper .datepicker header .btn-date-label.active {
+  opacity: 1;
+}
+.wrapper .datepicker .body {
+  display: flex;
+}
+.wrapper .datepicker .body .section {
+  width: 300px;
+  height: 348px;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+.wrapper .datepicker .body .section.calendar {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+}
+.wrapper .datepicker .body .section.calendar.active {
+  transform: translateX(0%);
+}
+.wrapper .datepicker .body .section.calendar .month-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px 8px 8px;
+  font-size: 0.9em;
+}
+.wrapper .datepicker .body .section.calendar .month-controls .btn-previous-month, .wrapper .datepicker .body .section.calendar .month-controls .btn-next-month {
+  cursor: pointer;
+  user-select: none;
+}
+.wrapper .datepicker .body .section.calendar .weekdays {
+  display: flex;
+}
+.wrapper .datepicker .body .section.calendar .weekdays .weekday {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40.5714px;
+  width: 40.5714px;
+  opacity: 0.5;
+  font-size: 0.7em;
+}
+.wrapper .datepicker .body .section.calendar .dates {
+  position: relative;
+}
+.wrapper .datepicker .body .section.calendar .dates .month {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  position: absolute;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  will-change: transform, opacity;
+  opacity: 1;
+  visibility: visible;
+}
+.wrapper .datepicker .body .section.calendar .dates .month.previous {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.wrapper .datepicker .body .section.calendar .dates .month.next {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+}
+.wrapper .datepicker .body .section.calendar .dates .month .date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40.5714px;
+  width: 40.5714px;
+  border-radius: 50%;
+  transition: color 0.2s, background-color 0.2s;
+  will-change: color, background-color;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+.wrapper .datepicker .body .section.calendar .dates .month .date.selected .ripple {
+  opacity: 1;
+  transform: scale(0.9);
+}
+.wrapper .datepicker .body .section.calendar .dates .month .date.selected span {
+  z-index: 2;
+  color: white;
+}
+.wrapper .datepicker .body .section.calendar .dates .month .date span {
+  font-size: 0.75em;
+}
+.wrapper .datepicker .body .section.calendar .dates .month .date .ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.4);
+  background: #2F3C4E;
+  opacity: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.wrapper .datepicker .body .section.year-slider {
+  transform: translateX(0%);
+  display: flex;
+  flex-direction: column;
+}
+.wrapper .datepicker .body .section.year-slider.active {
+  transform: translateX(-100%);
+}
+.wrapper .datepicker .body .section.year-slider .years {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.wrapper .datepicker .body .section.year-slider .years .year {
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  transition: font-size 0.2s, color 0.2s;
+  will-change: font-size, color;
+}
+.wrapper .datepicker .body .section.year-slider .years .year.active {
+  font-size: 28px;
+  color: #516F85;
+}
+.wrapper .datepicker .bottom-controls {
+  display: flex;
+  justify-content: flex-end;
+  background: white;
+}
+.wrapper .datepicker .bottom-controls > button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  padding: 14px 16px;
+  min-width: 60px;
+  color: #516F85;
+  cursor: pointer;
+  border-radius: 2px;
+  margin: 8px;
+  transition: background-color 0.2s;
+}
+.wrapper .datepicker .bottom-controls > button:hover {
+  color: #6789a2;
+  background-color: rgba(158, 158, 158, 0.2);
+}
+.wrapper .datepicker .bottom-controls > button:active {
+  color: #86a2b6;
+  background-color: rgba(158, 158, 158, 0.3);
+}
+@media (min-width: 768px) {
+  .wrapper .datepicker {
+    flex-direction: row;
+    width: 464px;
+  }
+  .wrapper .datepicker header {
+    padding: 16px 48px 16px 16px;
+    z-index: 2;
+  }
+  .wrapper .datepicker header .btn-date-label {
+    width: 100px;
+  }
+  .wrapper .datepicker header .no-wrap {
+    white-space: nowrap;
+  }
+  .wrapper .datepicker .section {
+    z-index: 1;
+  }
+  .wrapper .datepicker .bottom-controls {
+    width: 300px;
+  }
+}
